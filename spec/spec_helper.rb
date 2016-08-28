@@ -25,6 +25,18 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 
+  Shoulda::Matchers.configure do |config|
+
+    config.integrate do |with|
+      # Choose a test framework:
+      with.test_framework :rspec
+
+      # Or, choose the following (which implies all of the above):
+      with.library :rails
+    end
+
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

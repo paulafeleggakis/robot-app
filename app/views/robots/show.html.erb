@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>X coordinat:</strong>
+  <%= @robot.x_coordinat %>
+</p>
+
+<p>
+  <strong>Y coordinate:</strong>
+  <%= @robot.y_coordinate %>
+</p>
+
+<p>
+  <strong>Oreintation:</strong>
+  <%= @robot.oreintation %>
+</p>
+
+<%= link_to 'Edit', edit_robot_path(@robot) %> |
+<%= link_to 'Back', robots_path %>
