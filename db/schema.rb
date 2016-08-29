@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160826062431) do
   create_table "robots", force: :cascade do |t|
     t.integer  "x_coordinate"
     t.integer  "y_coordinate"
-    t.string   "oreintation"
+    t.string   "orientation"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Robot do
 
+  let(:orientations) {['north', 'south', 'east', 'west']}
+
   it 'allows reading and writing of the :x_coordinate' do
     subject.x_coordinate = 1
     expect(subject.x_coordinate).to eql (1)
@@ -25,7 +27,39 @@ describe Robot do
 
   it do
     should validate_inclusion_of(:orientation).
-               in_array(['north', 'south', 'east', 'west'])
+               in_array(orientations)
+  end
+
+  context '.move' do
+
+    it 'increments the x-coord if robot is facing north' do
+      subject.orientation = 'north'
+      subject.x_coordinate = 1
+      subject.move
+      expect(subject.x_coordinate).to eql(2)
+    end
+
+    it 'decrements the x-coord if robot is facing south' do
+      subject.orientation = 'south'
+      subject.x_coordinate = 1
+      subject.move
+      expect(subject.x_coordinate).to eql(0)
+    end
+
+    it 'increments the y-coord if robot is facing east' do
+      subject.orientation = 'east'
+      subject.y_coordinate = 1
+      subject.move
+      expect(subject.y_coordinate).to eql(2)
+    end
+
+    it 'decrements the y-coord if robot is facing west' do
+      subject.orientation = 'west'
+      subject.y_coordinate = 1
+      subject.move
+      expect(subject.y_coordinate).to eql(0)
+    end
+
   end
 
 end

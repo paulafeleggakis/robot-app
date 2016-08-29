@@ -69,6 +69,6 @@ class RobotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def robot_params
-      params.require(:robot).permit(:x_coordinat, :y_coordinate, :oreintation)
+      params.require(:robot).permit(:x_coordinate, :y_coordinate, :orientation)
     end
 end

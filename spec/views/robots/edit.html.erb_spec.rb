@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "robots/edit" do
   before(:each) do
     @robot = assign(:robot, stub_model(Robot,
-      :x_coordinat => 1,
+      :x_coordinate => 1,
       :y_coordinate => 1,
-      :oreintation => "MyString"
+      :orientation => "MyString"
     ))
   end
 

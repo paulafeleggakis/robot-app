@@ -1,5 +1,6 @@
-<%= form_for(robot) do |f| %>
-  <% if robot.errors.any? %>
+<%= form_for(@robot, :remote => true, :validate => true, :html => {:multipart => true}) do |f| %>
+
+        <% if robot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(robot.errors.count, "error") %> prohibited this robot from being saved:</h2>
 
@@ -11,22 +12,30 @@
     </div>
   <% end %>
 
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary">Place</button>
+      <button type="button" class="btn btn-secondary">Move</button>
+      <button type="button" class="btn btn-secondary">Left</button>
+      <button type="button" class="btn btn-secondary">Right</button>
+      <button type="button" class="btn btn-secondary">Report</button>
+    </div>
+
   <div class="field">
-    <%= f.label :x_coordinat %>
-    <%= f.number_field :x_coordinat %>
+    <%= f.label :x_coordinate %>
+    <%= f.number_field :x_coordinate, min:1, max:5 %>
   </div>
 
   <div class="field">
     <%= f.label :y_coordinate %>
-    <%= f.number_field :y_coordinate %>
+    <%= f.number_field :y_coordinate, min:1, max:5 %>
   </div>
 
   <div class="field">
-    <%= f.label :oreintation %>
-    <%= f.text_field :oreintation %>
+    <%= f.label :orientation %>
+    <%= f.select :orientation, options_for_select([['north'], ['south'], ['east'], ['west']])%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Place Robot' %>
   </div>
 <% end %>
