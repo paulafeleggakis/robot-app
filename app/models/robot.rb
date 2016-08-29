@@ -28,16 +28,16 @@ class Robot < ApplicationRecord
     self.save
   end
 
-  def move_left
+  def move_direction(direction)
     case self.orientation
       when "north"
-        self.orientation = 'west'
+        self.orientation = (direction =='left' ? 'west' : 'east')
       when "east"
-        self.orientation = 'north'
+        self.orientation = (direction =='left' ? 'north' : 'south')
       when "south"
-        self.orientation = 'east'
+        self.orientation = (direction == 'left' ? 'east' : 'west')
       else
-        self.orientation = 'south'
+        self.orientation = (direction == 'left' ? 'south' : 'north')
     end
     self.save
   end

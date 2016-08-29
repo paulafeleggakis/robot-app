@@ -62,30 +62,60 @@ describe Robot do
 
   end
 
-  context '.move_left'
+  context '.move_direction' do
 
-    it 'rotates to west if facing north' do
-      subject.orientation = 'north'
-      subject.move_left
-      expect(subject.orientation).to eql('west')
+    context 'left' do
+      it 'rotates to west if facing north' do
+        subject.orientation = 'north'
+        subject.move_direction('left')
+        expect(subject.orientation).to eql('west')
+      end
+
+      it 'rotates to north if facing east' do
+        subject.orientation = 'east'
+        subject.move_direction('left')
+        expect(subject.orientation).to eql('north')
+      end
+
+      it 'rotates to east if facing south' do
+        subject.orientation = 'south'
+        subject.move_direction('left')
+        expect(subject.orientation).to eql('east')
+      end
+
+      it 'rotates to south if facing west' do
+        subject.orientation = 'west'
+        subject.move_direction('left')
+        expect(subject.orientation).to eql('south')
+      end
     end
 
-    it 'rotates to north if facing east' do
-      subject.orientation = 'east'
-      subject.move_left
-      expect(subject.orientation).to eql('north')
+    context 'right' do
+      it 'rotates to east if facing north' do
+        subject.orientation = 'north'
+        subject.move_direction('right')
+        expect(subject.orientation).to eql('east')
+      end
+
+      it 'rotates to south if facing east' do
+        subject.orientation = 'east'
+        subject.move_direction('right')
+        expect(subject.orientation).to eql('south')
+      end
+
+      it 'rotates to west if facing south' do
+        subject.orientation = 'south'
+        subject.move_direction('right')
+        expect(subject.orientation).to eql('west')
+      end
+
+      it 'rotates to north if facing west' do
+        subject.orientation = 'west'
+        subject.move_direction('right')
+        expect(subject.orientation).to eql('north')
+      end
     end
 
-    it 'rotates to east if facing south' do
-      subject.orientation = 'south'
-      subject.move_left
-      expect(subject.orientation).to eql('east')
-    end
-
-    it 'rotates to south if facing west' do
-      subject.orientation = 'west'
-      subject.move_left
-      expect(subject.orientation).to eql('south')
-    end
+  end
 
 end
