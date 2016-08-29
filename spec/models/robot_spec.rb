@@ -118,4 +118,15 @@ describe Robot do
 
   end
 
+  context '.report' do
+
+    it 'returns a string stating the robots position and orientation' do
+      subject.orientation = 'west'
+      subject.x_coordinate = 1
+      subject.y_coordinate = 1
+      expect(subject.report).to eql("The robots position is (1,1) facing west")
+    end
+
+  end
+
 end

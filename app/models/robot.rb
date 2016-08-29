@@ -42,4 +42,8 @@ class Robot < ApplicationRecord
     self.save
   end
 
+  def report
+    "The robots position is (#{self.x_coordinate},#{self.y_coordinate}) facing #{self.orientation}"
+  end
+
 end
