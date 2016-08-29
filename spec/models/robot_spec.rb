@@ -62,4 +62,30 @@ describe Robot do
 
   end
 
+  context '.move_left'
+
+    it 'rotates to west if facing north' do
+      subject.orientation = 'north'
+      subject.move_left
+      expect(subject.orientation).to eql('west')
+    end
+
+    it 'rotates to north if facing east' do
+      subject.orientation = 'east'
+      subject.move_left
+      expect(subject.orientation).to eql('north')
+    end
+
+    it 'rotates to east if facing south' do
+      subject.orientation = 'south'
+      subject.move_left
+      expect(subject.orientation).to eql('east')
+    end
+
+    it 'rotates to south if facing west' do
+      subject.orientation = 'west'
+      subject.move_left
+      expect(subject.orientation).to eql('south')
+    end
+
 end
