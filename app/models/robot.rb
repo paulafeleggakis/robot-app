@@ -1,18 +1,17 @@
 class Robot < ApplicationRecord
 
-  attr_accessor :x_coordinate
-  attr_accessor :y_coordinate
-  attr_accessor :orientation
 
   validates_presence_of :x_coordinate, :y_coordinate, :orientation
   validates_inclusion_of :orientation, in: %w(north south east west), :message => "unknown orientation"
 
-  def place (x_ord, y_ord, orientation)
-    self.x_coordinate = x_ord
-    self.y_coordinate = y_ord
-    self.orientation = orientation
-    self.save
-  end
+  # before_save :valid_position?
+
+  # def place (x_ord, y_ord, orientation)
+  #   self.x_coordinate = x_ord
+  #   self.y_coordinate = y_ord
+  #   self.orientation = orientation
+  #   self.save
+  # end
 
   def move
     case self.orientation
@@ -45,5 +44,13 @@ class Robot < ApplicationRecord
   def report
     "The robots position is (#{self.x_coordinate},#{self.y_coordinate}) facing #{self.orientation}"
   end
+
+
+  # def valid_position?
+  #   self.x_coordinate <= 5 &&
+  #   self.y_coordinate <= 5 &&
+  #   self.x_coordinate >= 0 &&
+  #   self.y_coordinate >= 0
+  # end
 
 end

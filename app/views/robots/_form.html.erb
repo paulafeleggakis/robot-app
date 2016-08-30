@@ -1,41 +1,43 @@
 <%= form_for(@robot, :remote => true, :validate => true, :html => {:multipart => true}) do |f| %>
 
-        <% if robot.errors.any? %>
+        <% if @robot.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(robot.errors.count, "error") %> prohibited this robot from being saved:</h2>
+      <h2><%= pluralize(@robot.errors.count, "error") %> prohibited this robot from being saved:</h2>
 
       <ul>
-      <% robot.errors.full_messages.each do |message| %>
+      <% @robot.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary">Place</button>
-      <button type="button" class="btn btn-secondary">Move</button>
-      <button type="button" class="btn btn-secondary">Left</button>
-      <button type="button" class="btn btn-secondary">Right</button>
-      <button type="button" class="btn btn-secondary">Report</button>
-    </div>
+      <button type="button" class="btn btn-primary" id='place'>Place</button>
+      <button type="button" class="btn btn-primary" id='move'>Move</button>
+      <button type="button" class="btn btn-primary" id='left'>Left</button>
+      <button type="button" class="btn btn-primary" id='right'>Right</button>
+      <button type="button" class="btn btn-primary" id='report'>Report</button>
 
-  <div class="field">
-    <%= f.label :x_coordinate %>
-    <%= f.number_field :x_coordinate, min:1, max:5 %>
-  </div>
+      <div id="place_data">
 
-  <div class="field">
-    <%= f.label :y_coordinate %>
-    <%= f.number_field :y_coordinate, min:1, max:5 %>
-  </div>
+          <div class="field">
+            <%= f.label :x_coordinate %>
+            <%= f.number_field :x_coordinate, min:1, max:5 %>
+          </div>
 
-  <div class="field">
-    <%= f.label :orientation %>
-    <%= f.select :orientation, options_for_select([['north'], ['south'], ['east'], ['west']])%>
-  </div>
+          <div class="field">
+            <%= f.label :y_coordinate %>
+            <%= f.number_field :y_coordinate, min:1, max:5 %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit 'Place Robot' %>
-  </div>
+          <div class="field">
+            <%= f.label :orientation %>
+            <%= f.select :orientation, options_for_select([['north'], ['south'], ['east'], ['west']])%>
+          </div>
+
+          <div class="actions">
+            <%= f.submit 'Place Robot' , :id => 'place_button'%>
+          </div>
+
+      </div>
 <% end %>
