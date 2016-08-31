@@ -3,25 +3,21 @@
 $(document).on('turbolinks:load', function() {
 
     $(document).ready(function () {
-        $("#move").prop("disabled",true);
         $("#left").prop("disabled",true);
         $("#right").prop("disabled",true);
         $("#report").prop("disabled",true);
-        $("#place_data").hide();
+        $("#move").hide();
     });
 
-
-    $("#place").click(function(){
-        $("#place_data").show();
-    });
 
     $("#place_button").click(function(){
-        $("#move").prop("disabled",false);
         $("#left").prop("disabled",false);
         $("#right").prop("disabled",false);
         $("#report").prop("disabled",false);
         $("#place_data").hide();
+        $("#move").show();
     });
+
 
 
 });

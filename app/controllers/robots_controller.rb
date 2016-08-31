@@ -4,21 +4,22 @@ class RobotsController < ApplicationController
   # GET /robots
   # GET /robots.json
   def index
-    @robots = Robot.all
+    # @robots = Robot.all
+    @robot = Robot.create
   end
 
   # GET /robots/1
   # GET /robots/1.json
   def show
+    set_robot
+    respond_to do |format|
+      format.html # show.html.erb
+    end
   end
 
   # GET /robots/new
   def new
     @robot = Robot.new
-  end
-
-  # GET /robots/1/edit
-  def edit
   end
 
   # POST /robots
@@ -28,37 +29,39 @@ class RobotsController < ApplicationController
 
     respond_to do |format|
       if @robot.save
-        format.html { render nothing: true }
+        format.html { render :show }
       else
         format.html { render :new }
-        format.json { render json: @robot.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /robots/1
-  # PATCH/PUT /robots/1.json
-  def update
+  def place
+    set_robot
+    @robot.place
     respond_to do |format|
-      if @robot.update(robot_params)
-        format.html { redirect_to @robot, notice: 'Robot was successfully updated.' }
-        format.json { render :show, status: :ok, location: @robot }
-      else
-        format.html { render :edit }
-        format.json { render json: @robot.errors, status: :unprocessable_entity }
-      end
+      format.html { render :show }
     end
   end
 
-  # DELETE /robots/1
-  # DELETE /robots/1.json
-  def destroy
-    @robot.destroy
+  def move
+    set_robot
+    @robot.move
     respond_to do |format|
-      format.html { redirect_to robots_url, notice: 'Robot was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { render :show }
     end
   end
+
+  def direction
+    set_robot
+    @direction = params[:direction]
+    puts @direction
+    @robot.move_direction(@direction)
+    respond_to do |format|
+      format.html { render :show }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

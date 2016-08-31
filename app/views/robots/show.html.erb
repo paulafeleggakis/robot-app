@@ -1,0 +1,14 @@
+<h1>My Robot</h1>
+
+<div>
+  <%= link_to 'Move', move_robot_path(@robot), :class => 'btn btn-primary' %>
+  <%= link_to 'Left', direction_robot_path(@robot, direction: 'left'), :class => 'btn btn-primary' %>
+  <%= link_to 'Right', direction_robot_path(@robot, direction: 'right'), :class => 'btn btn-primary' %>
+  <%= link_to 'Place', place_robot_path(@robot), :class => 'btn btn-primary' %>
+</div>
+
+<div>
+  "The robots position is <%= "#{@robot.x_coordinate}"%>,<%= "#{@robot.y_coordinate}"%> facing <%= "#{@robot.orientation}"%>"
+</div>
+<%= render 'actions', robot: @robot %>
+
