@@ -4,7 +4,6 @@ class RobotsController < ApplicationController
   # GET /robots
   # GET /robots.json
   def index
-    # @robots = Robot.all
     @robot = Robot.create
   end
 
@@ -32,6 +31,20 @@ class RobotsController < ApplicationController
         format.html { render :show }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  # PUT /robots/1
+  # PUT /robots/1.json
+  def update
+    @robot = set_robot
+
+    respond_to do |format|
+      if @robot.update(robot_params)
+        format.html { redirect_to @robot, notice: 'Robot was successfully updated.' }
+      else
+        format.html { render action: "show" }
       end
     end
   end
