@@ -16,21 +16,21 @@
 
       <div class="field">
         <%= f.label :x_coordinate %>
-        <%= f.number_field :x_coordinate, min: 1, max: 5 %>
+        <%= f.number_field :x_coordinate, min: 1, max: 5, id: 'x_ord' %>
       </div>
 
       <div class="field">
         <%= f.label :y_coordinate %>
-        <%= f.number_field :y_coordinate, min: 1, max: 5 %>
+        <%= f.number_field :y_coordinate, min: 1, max: 5, id: 'y_ord' %>
       </div>
 
       <div class="field">
         <%= f.label :orientation %>
-        <%= f.select :orientation, options_for_select([['north'], ['south'], ['east'], ['west']]) %>
+        <%= f.select :orientation, options_for_select([['north'], ['south'], ['east'], ['west']]), {}, id: 'orient' %>
       </div>
 
       <div class="actions">
-        <%= f.submit 'Place Robot', :id => 'place_button' %>
+        <%= f.submit 'Place Robot', id: 'place_button' %>
       </div>
 
     </div>

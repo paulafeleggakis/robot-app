@@ -7,17 +7,6 @@ describe Robot do
   let(:robot) {Robot.create(:orientation => 'south', x_coordinate: 1, y_coordinate: 1)}
 
 
-  it { should validate_presence_of(:x_coordinate) }
-
-  it { should validate_presence_of(:y_coordinate) }
-
-  it { should validate_presence_of(:orientation) }
-
-  it do
-    should validate_inclusion_of(:orientation).
-               in_array(orientations)
-  end
-
   context '.move' do
 
     it 'increments the x-coord if robot is facing north' do

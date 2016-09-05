@@ -21,19 +21,6 @@ class RobotsController < ApplicationController
     @robot = Robot.new
   end
 
-  # POST /robots
-  # POST /robots.json
-  def create
-    @robot = Robot.new(robot_params)
-
-    respond_to do |format|
-      if @robot.save
-        format.html { render :show }
-      else
-        format.html { render :new }
-      end
-    end
-  end
 
   # PUT /robots/1
   # PUT /robots/1.json
@@ -42,15 +29,13 @@ class RobotsController < ApplicationController
 
     respond_to do |format|
       if @robot.update(robot_params)
-        format.html { redirect_to @robot, notice: 'Robot was successfully updated.' }
-      else
-        format.html { render action: "show" }
+        format.html { render :show }
       end
     end
   end
 
   def place
-    set_robot
+    @robot = set_robot
     @robot.place
     respond_to do |format|
       format.html { render :show }
@@ -68,7 +53,6 @@ class RobotsController < ApplicationController
   def direction
     set_robot
     @direction = params[:direction]
-    puts @direction
     @robot.move_direction(@direction)
     respond_to do |format|
       format.html { render :show }

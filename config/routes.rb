@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   get '/robots/:id/direction', to: 'robots#direction', as: 'direction_robot'
   get '/robots/:id/place', to: 'robots#place', as: 'place_robot'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

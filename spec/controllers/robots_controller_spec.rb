@@ -23,115 +23,56 @@ describe RobotsController do
   # This should return the minimal set of attributes required to create a valid
   # Robot. As you add validations to Robot, be sure to
   # adjust the attributes here as well.
-  # let(:valid_attributes) { { "x_coordinat" => "1" } }
+  let(:valid_attributes) { { "x_coordinate" => 0 } }
   #
   # # This should return the minimal set of values that should be in the session
   # # in order to pass any filters (e.g. authentication) defined in
   # # RobotsController. Be sure to keep this updated too.
-  # let(:valid_session) { {} }
-  #
-  #
-  describe "GET new" do
-    it "assigns a new robot as @robot" do
-      get :new, {}, valid_session
-      assigns(:robot).should be_a_new(Robot)
+  let(:valid_session) { {} }
+
+  describe "POST create" do
+    describe "with valid params" do
+      it "creates a new Robot" do
+        expect {
+          post :create, {:robot => valid_attributes}, valid_session
+        }.to change(Robot, :count).by(1)
+      end
+
+      it "assigns a newly created robot as @robot" do
+        post :create, {:robot => valid_attributes}, valid_session
+        expect(assigns(:robot)).to be_a(Robot)
+        expect(assigns(:robot)).to be_persisted
+      end
+
     end
   end
 
-  # describe "POST create" do
-  #   describe "with valid params" do
-  #     it "creates a new Robot" do
-  #       expect {
-  #         post :create, {:robot => valid_attributes}, valid_session
-  #       }.to change(Robot, :count).by(1)
-  #     end
-  #
-  #     it "assigns a newly created robot as @robot" do
-  #       post :create, {:robot => valid_attributes}, valid_session
-  #       assigns(:robot).should be_a(Robot)
-  #       assigns(:robot).should be_persisted
-  #     end
-  #
-  #     it "redirects to the created robot" do
-  #       post :create, {:robot => valid_attributes}, valid_session
-  #       response.should redirect_to(Robot.last)
-  #     end
-  #   end
-  #
-  #   describe "with invalid params" do
-  #     it "assigns a newly created but unsaved robot as @robot" do
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Robot.any_instance.stub(:save).and_return(false)
-  #       post :create, {:robot => { "x_coordinat" => "invalid value" }}, valid_session
-  #       assigns(:robot).should be_a_new(Robot)
-  #     end
-  #
-  #     it "re-renders the 'new' template" do
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Robot.any_instance.stub(:save).and_return(false)
-  #       post :create, {:robot => { "x_coordinat" => "invalid value" }}, valid_session
-  #       response.should render_template("new")
-  #     end
-  #   end
-  # end
-  #
-  # describe "PUT update" do
-  #   describe "with valid params" do
-  #     it "updates the requested robot" do
-  #       robot = Robot.create! valid_attributes
-  #       # Assuming there are no other robots in the database, this
-  #       # specifies that the Robot created on the previous line
-  #       # receives the :update_attributes message with whatever params are
-  #       # submitted in the request.
-  #       Robot.any_instance.should_receive(:update).with({ "x_coordinat" => "1" })
-  #       put :update, {:id => robot.to_param, :robot => { "x_coordinat" => "1" }}, valid_session
-  #     end
-  #
-  #     it "assigns the requested robot as @robot" do
-  #       robot = Robot.create! valid_attributes
-  #       put :update, {:id => robot.to_param, :robot => valid_attributes}, valid_session
-  #       assigns(:robot).should eq(robot)
-  #     end
-  #
-  #     it "redirects to the robot" do
-  #       robot = Robot.create! valid_attributes
-  #       put :update, {:id => robot.to_param, :robot => valid_attributes}, valid_session
-  #       response.should redirect_to(robot)
-  #     end
-  #   end
-  #
-  #   describe "with invalid params" do
-  #     it "assigns the robot as @robot" do
-  #       robot = Robot.create! valid_attributes
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Robot.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => robot.to_param, :robot => { "x_coordinat" => "invalid value" }}, valid_session
-  #       assigns(:robot).should eq(robot)
-  #     end
-  #
-  #     it "re-renders the 'edit' template" do
-  #       robot = Robot.create! valid_attributes
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Robot.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => robot.to_param, :robot => { "x_coordinat" => "invalid value" }}, valid_session
-  #       response.should render_template("edit")
-  #     end
-  #   end
-  # end
-  #
-  # describe "DELETE destroy" do
-  #   it "destroys the requested robot" do
-  #     robot = Robot.create! valid_attributes
-  #     expect {
-  #       delete :destroy, {:id => robot.to_param}, valid_session
-  #     }.to change(Robot, :count).by(-1)
-  #   end
-  #
-  #   it "redirects to the robots list" do
-  #     robot = Robot.create! valid_attributes
-  #     delete :destroy, {:id => robot.to_param}, valid_session
-  #     response.should redirect_to(robots_url)
-  #   end
-  # end
+
+  describe "PUT update" do
+    describe "with valid params" do
+      it "updates the requested robot" do
+        robot = Robot.create! valid_attributes
+        # Assuming there are no other robots in the database, this
+        # specifies that the Robot created on the previous line
+        # receives the :update_attributes message with whatever params are
+        # submitted in the request.
+        Robot.any_instance.should_receive(:update).with({ "x_coordinate" => 2 })
+        put :update, {:id => robot.to_param, :robot => { "x_coordinate" => 2 }}, valid_session
+      end
+
+      it "assigns the requested robot as @robot" do
+        robot = Robot.create! valid_attributes
+        put :update, {:id => robot.to_param, :robot => valid_attributes}, valid_session
+        assigns(:robot).should eq(robot)
+      end
+
+      it "redirects to the robot" do
+        robot = Robot.create! valid_attributes
+        put :update, {:id => robot.to_param, :robot => valid_attributes}, valid_session
+        response.should redirect_to(robot)
+      end
+    end
+  end
+
 
 end

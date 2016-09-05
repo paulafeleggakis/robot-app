@@ -2,7 +2,7 @@
   <%= link_to 'Move', move_robot_path(robot), :class => 'btn btn-primary' %>
   <%= link_to 'Left', direction_robot_path(robot, direction: 'left'), :class => 'btn btn-primary' %>
   <%= link_to 'Right', direction_robot_path(robot, direction: 'right'), :class => 'btn btn-primary' %>
-  <%= link_to 'Place', place_robot_path(robot), :class => 'btn btn-primary' %>
+  <%= link_to 'Place', place_robot_path(robot), :id => 'place', :class => 'btn btn-primary' %>
 </div>
 
 <div id="report">

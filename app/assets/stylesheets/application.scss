@@ -13,3 +13,37 @@
  *
  */
 
+html {
+  margin: 0;
+  padding: 0;
+  //background-image: url(image-path('noun_11018_cc.png'));
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto 0 auto;
+}
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.5em;
+  text-align: center;
+  color: rgb(183, 47, 75);
+  font-weight: 300;
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+p, #place_data {
+  line-height: 1.5em;
+  padding: 15px 0 0 15px;
+  text-align: justify;
+}
+
+.field, .actions {
+  padding: 10px 0 10px 0;
+}
+

@@ -1,4 +1,6 @@
-<h1>My Robot</h1>
+<h1 data-turbolinks-permanent>My Robot</h1>
+
+<p id="opening">Choose initial co-ordinates and an orientation for your robot:</p>
 
 <%unless @robot.new_record?%>
 <%= render 'form', robot: @robot %>
