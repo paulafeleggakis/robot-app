@@ -2,7 +2,5 @@
 
 <p id="opening">Choose initial co-ordinates and an orientation for your robot:</p>
 
-<%unless @robot.new_record?%>
 <%= render 'form', robot: @robot %>
 <%= render 'actions', robot: @robot %>
-<%end%>

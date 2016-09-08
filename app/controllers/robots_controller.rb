@@ -34,14 +34,6 @@ class RobotsController < ApplicationController
     end
   end
 
-  def place
-    @robot = set_robot
-    @robot.place
-    respond_to do |format|
-      format.html { render :show }
-    end
-  end
-
   def move
     set_robot
     @robot.move

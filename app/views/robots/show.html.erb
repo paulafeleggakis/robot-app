@@ -1,14 +1,17 @@
-<h1>My Robot</h1>
+<h1 data-turbolinks-permanent>My Robot</h1>
 
 <div>
-  <%= link_to 'Move', move_robot_path(@robot), :id => 'move_button', :class => 'btn btn-primary' %>
-  <%= link_to 'Left', direction_robot_path(@robot, direction: 'left'), :class => 'btn btn-primary' %>
-  <%= link_to 'Right', direction_robot_path(@robot, direction: 'right'), :class => 'btn btn-primary' %>
-  <%= link_to 'Place', place_robot_path(@robot), :id => 'place_2', :class => 'btn btn-primary' %>
+  <p> Your robot has been placed. Select another action for your robot:</p>
 </div>
 
 <div>
-  "The robots position is <%= "#{@robot.x_coordinate}"%>, <%= "#{@robot.y_coordinate}"%> facing <%= "#{@robot.orientation}"%>"
+  <%= link_to 'Move', move_robot_path(@robot), :class => 'btn btn-primary' %>
+  <%= link_to 'Left', direction_robot_path(@robot, direction: 'left'), :class => 'btn btn-primary' %>
+  <%= link_to 'Right', direction_robot_path(@robot, direction: 'right'), :class => 'btn btn-primary' %>
+</div>
+
+<div>
+  <p><b>The robots position is now <%= "#{@robot.x_coordinate}"%>, <%= "#{@robot.y_coordinate}"%> facing <%= "#{@robot.orientation}"%>. Select another action.</b></p>
 </div>
 
 
